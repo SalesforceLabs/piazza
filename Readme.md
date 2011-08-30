@@ -1,3 +1,5 @@
+Piazza is live and running on Heroku: https://piazza.herokuapp.com/
+
 # Basics
 Run `make` in Project root directory to setup project.
 
