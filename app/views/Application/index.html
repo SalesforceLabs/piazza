@@ -4,7 +4,12 @@
 <div class="index" data-role="page" data-url="/" data-cache="never">
     <div data-role="header">
         <a href="@{Application.config()}" data-icon="gear" data-transition="slidedown">Configure</a>
-        <h1>Home</h1>
+        #{if user.getLocationStr()}
+            <h1>${user.getLocationStr()}</h1>
+        #{/if}
+        #{else}
+            <h1>Home</h1>
+        #{/else}
         <a href="@{RequiresLogin.logout()}" rel="external" data-icon="delete" data-iconpos="right">Logout</a>
     </div><!-- /header -->
 
