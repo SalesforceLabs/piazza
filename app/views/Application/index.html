@@ -3,14 +3,18 @@
 
 <div class="index" data-role="page" data-url="/" data-cache="never">
     <div data-role="header">
-        <a href="@{Application.config()}" data-icon="gear" data-transition="slidedown">Configure</a>
-        #{if user.getLocationStr()}
-            <h1>${user.getLocationStr()}</h1>
+        <a href="@{Application.refresh()}" data-icon="refresh" data-transition="fade" >Refresh</a>
+        
+        #{if user.getLocationStr() }
+	        <h1>${user.getLocationStr()}</h1>
+            <a href="#" class="removeEvent" data-icon="grid" data-theme="a" data-iconpos="right">Change event</a>
         #{/if}
+        
         #{else}
             <h1>Home</h1>
+            <a href="@{Event.list()}" class="addEvent" data-transition="slideup" data-icon="plus" data-iconpos="right">Add event</a>
         #{/else}
-        <a href="@{RequiresLogin.logout()}" rel="external" data-icon="delete" data-iconpos="right">Logout</a>
+       
     </div><!-- /header -->
 
     <div data-role="content">
@@ -39,17 +43,7 @@
     #{/if}
     
     <div data-role="footer" data-id="footer" data-position="fixed" style="padding: 5px 0 10px 0">
-        <a href="@{Application.refresh()}" data-icon="refresh" data-transition="fade" style="margin-left: 0.5em;">Refresh</a>
-        #{if ! user.getLocationStr() }
-	        <a href="@{Event.list()}" class="addEvent" data-transition="slideup" data-icon="plus">Add event</a>
-        #{/if}
-        <span class="location">
-        #{else}
-            <form method="DELETE" action="@{Location.remove()}" style="display: inline" data-transition="fade">
-                #{authenticityToken /}
-		        <input type="submit" data-icon="minus" data-inline="true" data-theme="a" value="${user.getLocationStr()}">
-            </form>
-        #{/else}
-        </span>
+        <a href="@{Application.config()}" data-icon="gear" data-transition="slidedown">Configure</a>
+        <a href="@{RequiresLogin.logout()}" class="button-right" rel="external" data-icon="delete" data-iconpos="right">Logout</a>
     </div><!-- /footer -->
 </div><!-- /page -->

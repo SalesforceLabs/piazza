@@ -150,7 +150,7 @@
                 type: 'POST'
             });
         };
-        
+
         var error = function() {
         	console.log('geoloc failed redirecting to events');
             $.mobile.changePage('/location', {
@@ -184,6 +184,16 @@
 	        console.log('highlight', hashtag);
 	        $(index).find('.tweet').highlight(hashtag);
         }
+
+        //removing the conference setting
+        $(index).find('.removeEvent').live('vclick', function(e){
+            if(e) { e.preventDefault();}        
+            $.mobile.changePage('/location', {
+            	type: 'DELETE',
+            	data: {viewEvents: true, authenticityToken: window.csrfToken},
+            	transition: 'slideup'
+            });
+        });
     });
 
     $('.event-list').live('pagecreate', function(e) {
