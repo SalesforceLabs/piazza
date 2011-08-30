@@ -72,7 +72,7 @@ public class User extends GenericModel {
 
     private User(String id) {
         this.id = id;
-        this.keywords = "salesforce";
+        this.keywords = "";
         this.staging = isAdmin();
     }
 
