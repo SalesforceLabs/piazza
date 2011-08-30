@@ -1,0 +1,25 @@
+#{extends 'main.html' /}
+#{set title:'Login' /}
+
+<div data-role="page">
+    <div data-role="header">
+        <h1>Piazza – Login</h1>
+    </div><!-- /header -->
+
+    <div data-role="content">
+        <center>
+            <h2>Welcome to Piazza</h2>
+        </center>
+        <p>Piazza lets you find nearby leads at large social gatherings.</p>
+        <a href="@{RequiresLogin.auth()}" rel="external" data-role="button">
+            <img src="@{'/public/img/twitter-bird-16-black.png'}" title="Twitter bird" style="vertical-align: center; margin-right: 0.3em;"></img>
+             Login with Twitter
+        </a>
+        <p>You need a Twitter account to use Piazza. We won&rsquo;t post anything without your permission.</p>
+
+    </div><!-- /content -->
+
+    <div data-role="footer">
+        <h4>Force.com Labs &copy; 2011</h4>
+    </div><!-- /footer -->
+</div><!-- /page -->

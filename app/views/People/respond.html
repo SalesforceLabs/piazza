@@ -1,0 +1,27 @@
+#{extends 'main.html' /}
+#{set title:'Respond to ' + twitterUser /}
+
+<div class="respond" data-role="page">
+    <div data-role="header">
+        <a href="@{People.detail(twitterUser)}" data-direction="reverse" data-icon="back">@${twitterUser}</a>
+        <h1>Respond to ${twitterUser}</h1>
+    </div><!-- /header -->
+    <div data-role="content">
+        <form action="@{People.updateStatus()}" method="POST" data-transition="fade">
+            <label for="msg">Message:</label>
+	        <textarea name="msg" class="msg" maxlength="140">@${twitterUser} ${msg}</textarea>
+         
+            #{ authenticityToken /}
+            <input type="hidden" name="twitterUser" value="${twitterUser}">
+
+            <fieldset class="ui-grid-a">
+			    <div class="ui-block-a">
+			        <a href="@{People.detail(twitterUser)}" data-role="button" data-direction="reverse">Cancel</a>
+                </div>
+			    <div class="ui-block-b">
+		            <input data-theme="b" type="submit" value="Send">
+                </div>
+			</fieldset>
+        </form>
+    </div>
+</div>

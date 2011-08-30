@@ -1,0 +1,230 @@
+#Conference mock data
+models.Conference(c1):
+    name:       Dreamforce 2011
+    hashtag:    "#df11"
+    startDate:  2011-08-30
+    endDate:    2011-09-02
+    address:    747 Howard Street, San Francisco, CA 94103
+    city:       San Francisco
+    confLat:    37.784184
+    confLong_:  -122.401415
+    
+models.Conference(c2):
+    name:       SES San Francisco 2011
+    hashtag:    "#SESConf"
+    startDate:  2011-08-15
+    endDate:    2011-08-19
+    address:    747 Howard Street, San Francisco, CA 94103
+    city:       San Francisco
+    confLat:    37.784184
+    confLong_:  -122.401415
+    
+models.Conference(c3):
+    name:       WordCamp San Francisco 2011
+    hashtag:    "#wcsf"
+    startDate:  2011-08-12
+    endDate:    2011-08-14
+    address:    1675 Owens Street, San Francisco, CA 94158
+    city:       San Francisco
+    confLat:    37.771029
+    confLong_:  -122.396181
+
+models.Conference(c4):
+    name:       CRM Evolution 2011
+    hashtag:    "#CRMe11"
+    startDate:  2011-08-08
+    endDate:    2011-08-10
+    address:    1535 Broadway, New York, NY 10036
+    city:       New York
+    confLat:    40.758128
+    confLong_:  -73.985624
+
+models.Conference(c5):
+    name:       2nd Splunk Annual Worldwide Users Conference
+    hashtag:    "#splunkconf"
+    startDate:  2011-08-15
+    endDate:    2011-08-17
+    address:    335 Powell Street, San Francisco, California 94102
+    city:       San Francisco 
+    confLat:    37.787741
+    confLong_:  -122.408251
+
+models.Conference(c6):
+    name:       GROW 2011
+    hashtag:    "#growconf"
+    startDate:  2011-08-17
+    endDate:    2011-08-19
+    address:    1055 Canada Place, Vancouver, BC, V6C 0C3
+    city:       Vancouver
+    confLat:    49.284397
+    confLong_:  -123.116668
+
+models.Conference(c7):
+    name:       FrOSCon 2011
+    hashtag:    "#froscon"
+    startDate:  2011-08-20
+    endDate:    2011-08-21
+    address:    Hochschule Bonn-Rhein-Sieg, Grantham-Allee 20, 53757 Sankt Augustin
+    city:       Sankt Augustin
+    confLat:    50.77373
+    confLong_:  7.18462
+
+models.Conference(c8):
+    name:       CiviCon 2011 London
+    hashtag:    "#civicon"
+    startDate:  2011-08-22
+    endDate:    2011-08-22
+    address:    116-120 Goswell Road, London, EC1V 7DP
+    city:       London
+    confLat:    51.52454
+    confLong_:  -0.09897
+
+models.Conference(c9):
+    name:       NoSQL Now!
+    hashtag:    "#NoSQLNow"
+    startDate:  2011-08-23
+    endDate:    2011-08-25
+    address:    408 Almaden Blvd. San Jose, California, 95110
+    city:       San Jose
+    confLat:    37.336248
+    confLong_:  -121.898674
+
+models.Conference(c10):
+    name:       LeadsCon East
+    hashtag:    "#leadscon"
+    startDate:  2011-08-24
+    endDate:    2011-08-25
+    address:    1335 Avenue of the Americas, New York, New York, 10019
+    city:       New York
+    confLat:    40.762371
+    confLong_:  -73.978850
+
+models.Conference(c11):
+    name:       VMworld 2011
+    hashtag:    "#vmworld"
+    startDate:  2011-08-29
+    endDate:    2011-09-01
+    address:    3131 Las Vegas Blvd. South, Las Vegas, NV
+    city:       Las Vegas
+    confLat:    36.14455
+    confLong_:  -115.156784
+
+models.Conference(c12):
+    name:       Dreamforce 2011 - DevZone
+    hashtag:    "#devzone"
+    startDate:  2011-08-30
+    endDate:    2011-09-02
+    address:    747 Howard Street, San Francisco, CA 94103
+    city:       San Francisco
+    confLat:    37.784184
+    confLong_:  -122.401415
+
+models.Conference(c13):
+    name:       UX Week 2011
+    hashtag:    "#uxweek"
+    startDate:  2011-08-23
+    endDate:    2011-08-26
+    address:    1675 Owens Street, San Francisco, CA 94143
+    city:       San Francisco
+    confLat:    37.771029
+    confLong_:  -122.396181
+
+models.Conference(c14):
+    name:       Startup Camp Atlanta
+    hashtag:    "#startupatl"
+    startDate:  2011-08-26
+    endDate:    2011-08-28
+    address:    75 5th Street, NW, Atlanta, GA 30308
+    city:       Atlanta
+    confLat:    33.776759
+    confLong_:  -84.389344
+
+models.Conference(c15):
+    name:       International Food Blogger Conference 2011
+    hashtag:    "#IFBC"
+    startDate:  2011-08-26
+    endDate:    2011-08-28
+    address:    214 Royal Street, New Orleans, Louisiana 70130
+    city:       New Orleans
+    confLat:    29.954165
+    confLong_:  -90.068080
+
+models.Conference(c16):
+    name:       SocialDevCamp Chicago
+    hashtag:    "#SDCChi"
+    startDate:  2011-08-26
+    endDate:    2011-08-28
+    address:    2250 North Sheffield Avenue, Chicago, Illinois 60614
+    city:       Chicago
+    confLat:    41.922701
+    confLong_:  -87.653705
+
+models.Conference(c17):
+    name:       Pax 2011
+    hashtag:    "#pax"
+    startDate:  2011-08-26
+    endDate:    2011-08-28
+    address:    Downtown Seattle, WA
+    city:       Seattle
+    confLat:    47.608371
+    confLong_:  -122.334625
+
+models.Conference(c18):
+    name:       Research Triangle Software Symposium
+    hashtag:    "#nfjs"
+    startDate:  2011-08-26
+    endDate:    2011-08-28
+    address:    4700 Guardian Drive, Durham, NC 27703
+    city:       Raleigh
+    confLat:    35.889594
+    confLong_:  -78.849020
+
+models.Conference(c19):
+    name:       HR Florida
+    hashtag:    "#HRFL11"
+    startDate:  2011-08-29
+    endDate:    2011-08-31
+    address:    9939 Universal Boulevard, Orlando, FL 32819
+    city:       Orlando
+    confLat:    28.429798
+    confLong_:  -81.470348
+
+models.Conference(c20):
+    name:       Nanofibers for the 3rd Millenium
+    hashtag:    "#n3m"
+    startDate:  2011-08-29
+    endDate:    2011-08-31
+    address:    500 Fayetteville Street, Raleigh, North Carolina 27601
+    city:       Raleigh
+    confLat:    35.769655
+    confLong_:  -78.641193
+
+models.Conference(c21):
+    name:       VLDB 2011
+    hashtag:    "#vldb"
+    startDate:  2011-08-29
+    endDate:    2011-09-03
+    address:    1900 Fifth Avenue, Seattle, WA 98101
+    city:       Seattle
+    confLat:    47.608371
+    confLong_:  -122.334625
+
+models.Conference(c22):
+    name:       MacTech Boot Camp 2011
+    hashtag:    "#mactechbootcamp"
+    startDate:  2011-08-31
+    endDate:    2011-08-31
+    address:    171 West Randolph Street I, Chicago, IL 60601
+    city:       Chicago
+    confLat:    41.884536
+    confLong_:  -87.633206
+
+models.Conference(c23):
+    name:       SEO Workshop Seattle
+    hashtag:    "#wappow"
+    startDate:  2011-08-31
+    endDate:    2011-08-31
+    address:    Seattle,WA
+    city:       Seattle
+    confLat:    47.608371
+    confLong_:  -122.334625

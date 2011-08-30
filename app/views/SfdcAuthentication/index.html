@@ -1,0 +1,22 @@
+#{extends 'main.html' /}
+#{set title:'sfdcAuth' /}
+
+<div data-role="page">
+    <div data-role="header">
+		<a href="@{SfdcAuthentication.authenticate()}" data-icon="gear" rel=external>Authorize</a>
+		<h1>Leads displayed below once authenticated</h1>
+	</div>
+    <div data-role="content">	
+        <ul data-role="listview">
+            #{list records, as:'record'}
+            <li>
+            	name - ${record.name}<br/>
+            	id - ${record.id}
+            </li>
+            #{/list}
+        </ul>
+    </div>
+    <div data-role="footer">
+        <h4>Page Footer</h4>
+    </div>
+</div>

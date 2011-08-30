@@ -1,0 +1,42 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                                       Application.index
+GET     /refresh                                Application.refresh
+GET     /config                                 Application.config
+DELETE  /keyword                                Application.deleteKeyword
+POST    /keyword                                Application.createKeyword
+
+GET     /logout                                 RequiresLogin.logout
+GET     /login                                  RequiresLogin.login
+GET     /auth                                   RequiresLogin.auth
+
+POST    /location                               Location.resolve
+DELETE  /location                               Location.remove
+
+GET     /people/{twitterUser}                   People.detail
+GET     /people/{twitterUser}/respond           People.respond
+POST    /people/refresh                         People.refreshSfdc
+POST    /status                                 People.updateStatus
+
+GET     /sfdc/login                             SfdcAuthentication.login
+GET     /sfdc/logout                            SfdcAuthentication.logout
+POST    /sfdc/leads                             SfdcAuthentication.createLead
+
+GET     /events                                 Event.list
+POST    /events                                 Event.set
+
+# FavIcon and iPhone icons
+GET     /favicon.ico                            staticFile:/public/img/suit.ico
+GET     /apple-touch-icon-precomposed.png       staticFile:/public/img/suit.png
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+GET     /admin/conferences/reset                Conferences.reset
+
+# Import CRUD routes
+*       /admin/?                                ProtectedCRUD.index
+*       /admin                                  module:crud

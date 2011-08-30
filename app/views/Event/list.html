@@ -1,0 +1,64 @@
+#{extends 'main.html' /}
+#{set title:'Events' /}
+
+<div class="event-list" data-role="page" data-url="@{Event.list()}">
+    <div data-role="header">
+        <a href="@{Application.index()}" data-transition="slidedown" data-icon="back">Home</a>
+        <h1>Pick event</h1>
+    </div><!-- /header -->
+
+    <div data-role="content">
+        <ul data-role="listview" data-filter="true" data-filter-placeholder="Search events..." data-filter-theme="b" data-divider-theme="a"> 
+            <li data-role="list-divider">Happening now</li>
+            #{list conf.present, as:'c'}
+            <li data-theme="e">
+            <a href="#">
+                <p><strong>${c.name}</strong></p>
+                #{if c_isFirst}
+                    #{if user.hasLocation() }
+	                <span class="ui-li-count">Nearest!</span>
+                    #{/if}
+                #{/if}
+				<p>${c.startDate.format('MMM dd')} - ${c.endDate.format('MMM dd')}</p>
+				<p>${c.city}</p>
+                #{form @Event.set(c.id), method:'POST'}
+                #{/form}
+			</a>
+			</li>
+            #{/list}
+            
+            <li data-role="list-divider">Upcoming</li>
+            #{list conf.future, as:'c'}
+            <li>
+            <a href="#">
+                <p><strong>${c.name}</strong></p>
+				<p>${c.startDate.format('MMM dd')} - ${c.endDate.format('MMM dd')}</p>
+				<p>${c.city}</p>
+                #{form @Event.set(c.id), method:'POST'}
+                #{/form}
+			</a>
+			</li>
+            #{/list}
+            
+            <li data-role="list-divider">In the past</li>
+            #{list conf.past, as:'c'}
+            <li data-theme="d">
+            <a href="#">
+                <p><strong>${c.name}</strong></p>
+				<p>${c.startDate.format('MMM dd')} - ${c.endDate.format('MMM dd')}</p>
+				<p>${c.city}</p>
+                #{form @Event.set(c.id), method:'POST'}
+                #{/form}
+			</a>
+			</li>
+            #{/list}
+        </ul>
+    </div>
+    
+    #{if user.address }
+	    <div data-role="footer">
+            <span style="font-size: 160%">&#10037;</span>
+            ${user.address}
+	    </div>
+    #{/if}
+</div>

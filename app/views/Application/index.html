@@ -1,0 +1,50 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<div class="index" data-role="page" data-url="/" data-cache="never">
+    <div data-role="header">
+        <a href="@{Application.config()}" data-icon="gear" data-transition="slidedown">Configure</a>
+        <h1>Home</h1>
+        <a href="@{RequiresLogin.logout()}" rel="external" data-icon="delete" data-iconpos="right">Logout</a>
+    </div><!-- /header -->
+
+    <div data-role="content">
+        #{if tweets.isEmpty() }
+            <div class="ui-body ui-body-e">There are no recommended users at this time, please modify your keywords or search at a later time.</div>
+        #{/if}
+        #{else}
+	        <ul class="suggestions" data-role="listview">	
+            #{list tweets, as:'tweet'}
+	            <li>
+	            <a class="suggestion" href="@{People.detail(tweet.getFromUser())}">
+	                <img src="${tweet.getProfileImageUrl()}" alt="Twitter profile picture">
+	                <h3><span class="screenname">@${tweet.getFromUser()}</span></h3>
+                    <p class="tweet">${tweet.getText()}</p>
+	            </a>
+	            </li>
+            #{/list}
+	        </ul>
+        #{/else}
+    </div><!-- /content -->
+    
+    <!--- hidden element to get to keywords in the JS --->
+    <input type="hidden" class="keywords" value="${user.keywords}" />
+    #{if user.conference}
+	    <input type="hidden" class="hashtag" value="${user.conference.hashtag}" />
+    #{/if}
+    
+    <div data-role="footer" data-id="footer" data-position="fixed" style="padding: 5px 0 10px 0">
+        <a href="@{Application.refresh()}" data-icon="refresh" data-transition="fade" style="margin-left: 0.5em;">Refresh</a>
+        #{if ! user.getLocationStr() }
+	        <a href="@{Event.list()}" class="addEvent" data-transition="slideup" data-icon="plus">Add event</a>
+        #{/if}
+        <span class="location">
+        #{else}
+            <form method="DELETE" action="@{Location.remove()}" style="display: inline" data-transition="fade">
+                #{authenticityToken /}
+		        <input type="submit" data-icon="minus" data-inline="true" data-theme="a" value="${user.getLocationStr()}">
+            </form>
+        #{/else}
+        </span>
+    </div><!-- /footer -->
+</div><!-- /page -->

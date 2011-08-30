@@ -1,0 +1,9 @@
+# Application dependencies
+
+require:
+    - play
+    - play -> crud
+    - play -> secure
+    - org.twitter4j -> twitter4j-core 2.2.3
+    - com.google.guava -> guava r09
+    - com.javadocmd -> simplelatlng 1.0.0

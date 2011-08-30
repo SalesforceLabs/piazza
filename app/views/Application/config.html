@@ -1,0 +1,47 @@
+#{extends 'main.html' /}
+#{set title:'Settings' /}
+
+<div class="config" data-role="page">
+    <div data-role="header">
+        <a href="@{Application.index()}" data-transition="slideup" data-icon="back">Home</a>
+        <h1>Settings</h1>
+    </div><!-- /header -->
+
+    <div data-role="content">
+        <div class="ui-body ui-body-e">
+            <h2>Hello @${user.id}!</h2>
+            <p>Use this page to customize Piazza to your liking.</p>
+        </div>
+        <div data-role="collapsible">
+            <h2>Tracked Keywords</h2>
+            <p>These are the keywords you're currently tracking.
+            Hit <strong>X</strong> to delete unwanted keywords. 
+            </p>
+            <ul class="keywordList" data-role="listview" data-inset="true" data-split-icon="delete" data-split-theme="d">
+            #{if user.getKeywordSet() }
+                #{list user.getKeywordSet(), as: 'keyword'}
+                <li>
+                    <a href="#">${keyword}</a><a class="deleteKeyword" href="#">Delete</a>
+                </li>
+                #{/list}
+            #{/if}
+            </ul>
+            #{else}
+                <p class="emptyMessage">You aren't tracking any keywords, you should add some!</p>
+            #{/else}
+            <a class="createKeyword" href="#" data-role="button">Add keyword</a>
+        </div>
+        <div data-role="collapsible">
+            <h2>Salesforce.com</h2>
+            <p>
+            	#{if (user.sfdcAccessToken) }
+            	<p>Currently logged in as ${user.sfdcUsername}.</p>
+            	<p><a href="@{SfdcAuthentication.logout()}" data-role="button" rel=external>Disconnect from Salesforce.com</a></p>
+            	#{/if}
+                #{else}
+            	<a href="@{SfdcAuthentication.login()}" rel=external data-role="button">Track leads with Salesforce.com</a>
+                #{/else}
+            </p>
+        </div>
+    </div><!-- /content -->
+</div><!-- /page -->

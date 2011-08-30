@@ -1,0 +1,104 @@
+#{extends 'main.html' /}
+#{set title:'@' + person.twitterUser /}
+
+<div class="person-show" data-role="page" data-url="@{People.detail(person.twitterUser)}">
+    <div data-role="header">
+        <a href="@{Application.index()}" data-direction="reverse" data-icon="back">Go Back</a>
+        <h1>${person.twitterUser}</h1>
+    </div><!-- /header -->
+
+    <div data-role="content">
+        <div>
+            <div class="ui-body ui-body-c">
+            <table>
+            <td>
+            <img src="${person.getPicURL()}" title="Twitter profile picture" class="twt-thumbnail"/>
+            </td>
+            <td>
+	            <h3>${person.name}
+	                &mdash;
+	                <a href="http://www.twitter.com/${person.twitterUser.urlEncode()}" rel="external">${person.twitterUser}</a>
+	            </h3>
+	            #{if tweet}
+		             <span class="relevantTweet">
+		                <strong>&#8220;</strong>${tweet.getText()}<strong>&#8221;</strong>
+	                 </span>
+	            #{/if}
+                <div class="follow">
+                    Followers
+                    ${person.followers}
+                    Following
+                    ${person.following}
+                </div>
+            </td>
+            </table>
+            </div>
+        </div>
+        
+        <!--- hidden element to get to keywords in the JS --->
+	    <input type="hidden" class="keywords" value="${user.keywords}" />
+	    #{if user.conference}
+	        <input type="hidden" class="hashtag" value="${user.conference.hashtag}" />
+	    #{/if}
+
+        <div data-role="collapsible">
+            <h2>Connect</h2>
+            <p>Send a <strong>public message</strong> to ${person.twitterUser} via Twitter.</p>
+            #{if user.conference}
+            <p>Tap one of these standard messages to edit and send a message to this user.</p>
+            <div>
+	            <ul class="responseOptions" data-role="listview" data-inset="true">
+		            #{list msgs, as:'msg'}
+		            <li>
+		            	<a href="@{People.respond(person.twitterUser, msg)}">${msg}</a>
+		            </li>
+		            #{/list}
+	            </ul>
+            </div>
+            #{/if}
+        	<a href="@{People.respond(person.twitterUser)}" data-role="button">Custom message</a>
+        </div>
+        
+        <div data-role="collapsible">
+            <h2>Salesforce.com</h2>
+            <p>
+	            #{if user.hasSfdcToken() }
+	                #{if person.isSFDCTracked() }
+	                <table class="lead">
+						<tr><td>Last update</td><td>${person.leadLastActivity}</td></tr>
+						<tr><td>Status</td><td>${person.leadStatus}</td></tr>
+						<tr><td>Owner</td><td>${person.leadOwner}</td></tr>
+	                </table>
+	                <a href="${person.leadUrl}" rel="external" data-role="button">View in Salesforce</a>
+	               #{form @People.refreshSfdc(person.twitterUser), method:'POST'}
+	    	           <input type="submit" value="Refresh form Salesforce">
+                   #{/form}
+	                #{/if}
+	                #{else}
+		               Not tracking @${person.twitterUser} in Salesforce.com:
+		               #{form @SfdcAuthentication.createLead(person.id), method:'POST'}
+		    	           <input type="submit" value="Track in Salesforce">
+	                   #{/form}
+	                #{/else}
+                #{/if}
+                #{else}
+                    You need to connect to Salesforce to track this lead.
+	            	<a href="@{SfdcAuthentication.login(person.twitterUser)}" data-role="button" rel="external">Connect to Salesforce</a>
+                #{/else}
+            </p>
+        </div>
+
+        <div data-role="collapsible" data-collapsed="true">
+            <h2>Recent Tweets</h2>
+            <ul class="recent-tweets" data-role="listview" data-inset="true">
+            #{list person.tweets, as:'tweet'}
+            <li>
+                <div class="time">${tweet.getCreatedAt()}</div>
+                ${tweet.getText()}
+                <div class="clear"></div>
+            </li>
+            #{/list}
+            </ul>
+        </div>
+</div><!-- /page -->
+
