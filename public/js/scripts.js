@@ -142,6 +142,28 @@
     
     $('.index').live('pagecreate', function(e) {
         var index = this;
+        //highlighting keywords
+        var keywords = $(index).find('.keywords').val().split(',');
+        console.log(keywords);
+        $.each(keywords, function(i, keyword) {
+        	if (keyword) {
+	        	console.log('highlight', keyword);
+		        $(index).find('.tweet').highlight(keyword);
+        	}
+        });
+
+        //highlight the conference hashtag as well
+        var hashtag = $(index).find('.hashtag').val(); 
+        if (hashtag) {
+	        console.log('highlight', hashtag);
+	        $(index).find('.tweet').highlight(hashtag);
+        }
+
+    });
+
+    $('.waiting').live('pageshow', function() {
+        $.mobile.showPageLoadingMsg();	
+        var waiting = this;
         var success = function (geo) {
         	console.log('geoloc success, saving and redirecting');
             $.mobile.changePage('/location', {
@@ -161,39 +183,9 @@
         }
         
         if (navigator && navigator.geolocation) {
-	        $(index).find('.addEvent').live('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                navigator.geolocation.getCurrentPosition(success, error, {enableHighAccuracy: true});
-	        });
-        } 
-        
-        //highlighting keywords
-        var keywords = $(index).find('.keywords').val().split(',');
-        console.log(keywords);
-        $.each(keywords, function(i, keyword) {
-        	if (keyword) {
-	        	console.log('highlight', keyword);
-		        $(index).find('.tweet').highlight(keyword);
-        	}
-        });
+            navigator.geolocation.getCurrentPosition(success, error, {enableHighAccuracy: true});
+        }     
 
-        //highlight the conference hashtag as well
-        var hashtag = $(index).find('.hashtag').val(); 
-        if (hashtag) {
-	        console.log('highlight', hashtag);
-	        $(index).find('.tweet').highlight(hashtag);
-        }
-
-        //removing the conference setting
-        $(index).find('.removeEvent').live('vclick', function(e){
-            if(e) { e.preventDefault();}        
-            $.mobile.changePage('/location', {
-            	type: 'DELETE',
-            	data: {viewEvents: true, authenticityToken: window.csrfToken},
-            	transition: 'slideup'
-            });
-        });
     });
 
     $('.event-list').live('pagecreate', function(e) {

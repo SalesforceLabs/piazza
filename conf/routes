@@ -8,6 +8,7 @@ GET     /refresh                                Application.refresh
 GET     /config                                 Application.config
 DELETE  /keyword                                Application.deleteKeyword
 POST    /keyword                                Application.createKeyword
+GET		/waiting								Application.waiting
 
 GET     /logout                                 RequiresLogin.logout
 GET     /login                                  RequiresLogin.login

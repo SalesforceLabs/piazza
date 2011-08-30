@@ -71,7 +71,7 @@ public class User extends GenericModel {
     public static final Set<String> ADMINS = Collections.unmodifiableSet(Sets.newHashSet("djmojorisin", "anzadev", "mustpax"));
 
     private User(String id) {
-        this.id = id;
+        this.id = id.toLowerCase();
         this.keywords = "";
         this.staging = isAdmin();
     }
@@ -94,7 +94,10 @@ public class User extends GenericModel {
     }
 
     public static User get(String id) {
-        return User.findById(id);
+        if(id == null)
+        	return null;
+    	
+    	return User.findById(id.toLowerCase());
     }
 
     public static User getOrCreate(String id) {

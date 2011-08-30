@@ -46,7 +46,7 @@ public class SfdcUtil {
         @Override
         public void doJob() {
             User user = User.get(this.username);
-            Logger.debug("Starting: SFDC token refresh job: %s", user.id);
+            Logger.info("Starting: SFDC token refresh job: %s", user.id);
 	    	if (user.hasSfdcToken()) {
 	    		long oneHourAgo = new DateTime().minusHours(1).getMillis();
 	    		long issuedAt = user.sfdcIssuedAt;
@@ -65,7 +65,7 @@ public class SfdcUtil {
 	    			user.save();
 	    		}
 	    	}
-            Logger.debug("Finished: SFDC token refresh: %s", user.id);
+            Logger.info("Finished: SFDC token refresh: %s", user.id);
         }
     }
 

@@ -26,9 +26,13 @@ public class Application extends Controller {
     }
 
     public static void index() throws Exception {
-        SfdcUtil.refreshToken();
-
     	User user = RequiresLogin.getActiveUser();
+    	
+    	if(user.getLocationStr() == null){
+    		waiting();
+    	}
+    	
+    	SfdcUtil.refreshToken();
     	List tweets = TwitterUtil.getSuggestedTweets();
 
     	render(tweets, user);
@@ -82,5 +86,13 @@ public class Application extends Controller {
 				renderText(String.format("Keyword '%s' already exists.", keyword));
 			}
 		}
+	}
+	
+	/**
+	 * Diplay loading message, and prompt user for Location via JS and
+	 * Redirects to the event detail page.
+	 */
+	public static void waiting(){
+		render();
 	}
 }

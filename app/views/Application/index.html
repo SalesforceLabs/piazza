@@ -7,7 +7,7 @@
         
         #{if user.getLocationStr() }
 	        <h1>${user.getLocationStr()}</h1>
-            <a href="#" class="removeEvent" data-icon="grid" data-theme="a" data-iconpos="right">Change event</a>
+            <a href="@{Application.waiting}" class="removeEvent" data-icon="grid" data-theme="a" data-iconpos="right">Change event</a>
         #{/if}
         
         #{else}
