@@ -88,16 +88,21 @@ the Play application secret that we do not want to commit to source control.
 
 # Other Make Targets
 
+We use make targets to manage staging and production deployments. You can more about
+our branching and strategy [here][staging].
+
+[staging]: http://paksoy.net/post/9634387657/simple-staging-on-heroku 
+
 ## `make stage`
 
-Deploy the `staging` branch to anza.herokuapp.com. 
+Deploy the `staging` branch to the staging environment.
 
 You need to first merge the changes you want to push
 into the `staging` branch.
 
 ## `make deploy`
 
-Deploy the `prod` branch to piazza.herokuapp.com.
+Deploy the `prod` branch to the production environment.
 
 You need to first merge the changes you want to push
 into the `prod` branch.
