@@ -62,7 +62,7 @@ public class RequiresLogin extends Controller {
     												  request.url), ":"));
     }
 
-    public static final String ERROR_EMAIL = "anzadev@googlegroups.com";
+    public static final String ERROR_EMAIL = "anza-dev@googlegroups.com";
     
     @Catch(Exception.class)
     static void logError(Throwable e) {
