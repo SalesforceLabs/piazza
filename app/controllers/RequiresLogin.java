@@ -1,14 +1,21 @@
 package controllers;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.Arrays;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.Date;
 
 import models.User;
+
+import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail.SimpleEmail;
+
 import play.Logger;
 import play.Play;
 import play.libs.Crypto;
 import play.libs.OAuth;
 import play.mvc.Before;
+import play.mvc.Catch;
 import play.mvc.Controller;
 import play.mvc.Http.Header;
 import play.templates.JavaExtensions;
@@ -52,6 +59,44 @@ public class RequiresLogin extends Controller {
     												  isStaging ? "staging" : "public",
     												  session.get("username"),
     												  request.url), ":"));
+    }
+
+    public static final String ERROR_EMAIL = "anzadev@googlegroups.com";
+    
+    @Catch(Exception.class)
+    static void logError(Throwable e) {
+        Logger.error(e, "Sending Gack to %s", ERROR_EMAIL);
+        try {
+            SimpleEmail email = new SimpleEmail();
+            Date date = new Date();
+            email.setFrom("piazza@heroku.com");
+            email.addTo(ERROR_EMAIL);
+            email.setSubject(String.format("Error at %s logged: %s", date, e.getClass()));
+            StringBuilder body = new StringBuilder();
+            body.append("Date: ").append(date).append("\n\n");
+            body.append("Message: ").append(e.getMessage()).append("\n\n");
+            body.append("Class: ").append(e.getClass()).append("\n\n");
+            body.append("Exception trace: ").append(getSTString(e)).append("\n\n");
+            Throwable cause = e.getCause();
+            while (cause != null) {
+	            body.append("\nNew cause\n\n");
+	            body.append("Message: ").append(cause.getMessage()).append("\n\n");
+	            body.append("Class: ").append(cause.getClass()).append("\n\n");
+	            body.append("Exception trace: ").append(getSTString(cause)).append("\n\n");
+	            cause = cause.getCause();
+            }
+            email.setMsg(body.toString());
+            email.send();
+        } catch (EmailException emailEx) {
+            Logger.error(emailEx, "Failed to send error email to %s. This is really bad :(", ERROR_EMAIL);
+        }
+    }
+    
+    private static String getSTString(Throwable t) {
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        t.printStackTrace(pw);
+        return sw.toString();
     }
 
     @Before(unless={"login", "auth", "logout"})
@@ -120,7 +165,6 @@ public class RequiresLogin extends Controller {
     	flash.keep();
         if (OAuth.isVerifierResponse()) {
             // We got the verifier; now get the access token, store it and back to index
-
         	String token = session.get("token");
         	String secret = session.get("secret");
         	if (token == null || secret == null) {

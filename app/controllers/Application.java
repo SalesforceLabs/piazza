@@ -26,6 +26,8 @@ public class Application extends Controller {
     }
 
     public static void index() throws Exception {
+        if (1 < 2)
+        throw new IllegalStateException(new RuntimeException("inside"));
     	User user = RequiresLogin.getActiveUser();
     	
     	if(user.getLocationStr() == null){
