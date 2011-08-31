@@ -84,6 +84,28 @@ Heroku best practices recommend that we use [Heroku config values][herokuconfig]
 for setting application specific data. This includes secure values such as
 the Play application secret that we do not want to commit to source control.
 
+We require numerous environment variables to be set, these are listed below.
+Many are set by Heroku automatically when you add thr corresponding addon
+to your application.
+
+* `PLAY_SECRET`: random string that is used as the key for most cypto in Play.
+  **Keep this secret.** Should be at least 16 chars, preferably much longer.
+* `DATABASE_PATH`: path to the Postgres database in your Heroku environment. Will look like
+`postgresql://ec2-hostname-for-db/db-username`
+* `DATABASE_USER`: DB username
+* `DATABASE_PASS`: DB password
+* `MEMCACHE_SERVERS`: path to the memcached servers in Heroku
+* `MEMCACHE_USERNAME`: memcached username
+* `MEMCACHE_PASSWORD`: memcached password
+* `SENDGRID_USERNAME`: sendgrid username
+* `SENDGRID_PASSWORD`: sendgrid password
+* `SFDC_KEY`: Salesforce.com OAUTH consumer key
+* `SFDC_SECRET`: Salesforce.com OAUTH consumer secret
+* `SFDC_REDIRECT_URI`: Salesforce.com OAUTH redirect URI, should be `https://your-app-name.herokuapp/config`
+* `TWT_OAUTH_KEY`: Twitter OAUTH consumer key
+* `TWT_OAUTH_SECRET`: Twitter OAUTH consumer secret
+* `STAGING`: if true, only allow admins and staging authorized users to log in
+
 [herokuconfig]: http://devcenter.heroku.com/articles/config-vars
 
 # Other Make Targets
