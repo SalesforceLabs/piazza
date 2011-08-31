@@ -13,6 +13,7 @@ import org.apache.commons.mail.SimpleEmail;
 import play.Logger;
 import play.Play;
 import play.libs.Crypto;
+import play.libs.Mail;
 import play.libs.OAuth;
 import play.mvc.Before;
 import play.mvc.Catch;
@@ -73,25 +74,40 @@ public class RequiresLogin extends Controller {
             email.addTo(ERROR_EMAIL);
             email.setSubject(String.format("Error at %s logged: %s", date, e.getClass()));
             StringBuilder body = new StringBuilder();
-            body.append("Date: ").append(date).append("\n\n");
-            body.append("Message: ").append(e.getMessage()).append("\n\n");
-            body.append("Class: ").append(e.getClass()).append("\n\n");
+            body.append("Date:\t").append(date).append("\n\n");
+            body.append("Session:\t").append(session.get("username")).append("\n\n");
+            body.append("Message:\t").append(e.getMessage()).append("\n\n");
+            body.append("Class:\t").append(e.getClass()).append("\n\n");
             body.append("Exception trace: ").append(getSTString(e)).append("\n\n");
             Throwable cause = e.getCause();
             while (cause != null) {
-	            body.append("\nNew cause\n\n");
-	            body.append("Message: ").append(cause.getMessage()).append("\n\n");
-	            body.append("Class: ").append(cause.getClass()).append("\n\n");
+	            body.append("New cause\n\n");
+	            body.append("Message:\t").append(cause.getMessage()).append("\n\n");
+	            body.append("Class:\t").append(cause.getClass()).append("\n\n");
 	            body.append("Exception trace: ").append(getSTString(cause)).append("\n\n");
 	            cause = cause.getCause();
             }
+            addHttpHeaders(body);
             email.setMsg(body.toString());
-            email.send();
+            Mail.send(email);
         } catch (EmailException emailEx) {
             Logger.error(emailEx, "Failed to send error email to %s. This is really bad :(", ERROR_EMAIL);
         }
     }
     
+    private static void addHttpHeaders(StringBuilder sb) {
+        sb.append("HTTP Headers:\n");
+        for (Header h: request.headers.values()) {
+            sb.append("Header: ").append(h.name).append("\n");
+            sb.append("Value: ");
+            for (String val: h.values) {
+                sb.append(val).append(",");
+            }
+            sb.append("\n");
+        }
+        sb.append("\n\n");
+    }
+
     private static String getSTString(Throwable t) {
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
