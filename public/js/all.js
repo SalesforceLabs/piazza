@@ -228,8 +228,10 @@ arguments),this._chain)}});j.prototype.chain=function(){this._chain=!0;return th
         
         if (navigator && navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(success, error, {enableHighAccuracy: true});
-        }     
-
+        } else {
+            console.log('geolocation not awailable on browser.', $.browser);
+            error();
+        }
     });
 
     $('.event-list').live('pagecreate', function(e) {

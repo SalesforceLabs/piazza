@@ -184,8 +184,10 @@
         
         if (navigator && navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(success, error, {enableHighAccuracy: true});
-        }     
-
+        } else {
+            console.log('geolocation not awailable on browser.', $.browser);
+            error();
+        }
     });
 
     $('.event-list').live('pagecreate', function(e) {
