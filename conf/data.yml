@@ -228,3 +228,73 @@ models.Conference(c23):
     city:       Seattle
     confLat:    47.608371
     confLong_:  -122.334625
+    
+models.Conference(c24):
+    name:       Rocky Mountain Ruby
+    hashtag:    "#rockymtnruby"
+    startDate:  2011-08-31
+    endDate:    2011-09-02
+    address:    2032 14th Street,Boulder, CO
+    city:       Boulder
+    confLat:    40.018743
+    confLong_:  -105.277250
+
+models.Conference(c25):
+    name:       Dragon*Con
+    hashtag:    "#dcon"
+    startDate:  2011-09-02
+    endDate:    2011-09-05
+    address:    255 Courtland Street, NE, Atlanta, GA 30303
+    city:       Atlanta
+    confLat:    33.761170
+    confLong_:  -84.383798
+
+models.Conference(c26):
+    name:       DjangoCon US 2011
+    hashtag:    "#djangocon"
+    startDate:  2011-09-05
+    endDate:    2011-09-08
+    address:    921 SW Sixth Avenue, Portland, OR, 97204
+    city:       Portland
+    confLat:    45.522879
+    confLong_:  -122.676047
+
+models.Conference(c27):
+    name:       Content Marketing World 2011
+    hashtag:    "#cmworld"
+    startDate:  2011-09-06
+    endDate:    2011-09-08
+    address:    24 Public Square Cleveland, OH 44113
+    city:       Cleveland
+    confLat:    41.50045
+    confLong_:  -81.694453
+
+models.Conference(c28):
+    name:       Federation of Genealogical Societies 2011 Conference
+    hashtag:    "#fgs2011"
+    startDate:  2011-09-06
+    endDate:    2011-09-11
+    address:    21 Convention Center Plaza, Springfield, IL 62701
+    city:       Springfield
+    confLat:    39.80035
+    confLong_:  -89.650799
+    
+models.Conference(c29):
+    name:       Social Fresh Charlotte 2011
+    hashtag:    "#socialfresh"
+    startDate:  2011-09-06
+    endDate:    2011-09-07
+    address:    8629 J M Keynes Dr,Charlotte, NC 28262
+    city:       Charlotte
+    confLat:    35.307576
+    confLong_:  -80.752136
+    
+models.Conference(c30):
+    name:       Heartland Developers Conference (HDC) 2011
+    hashtag:    "#hdc11"
+    startDate:  2011-09-07
+    endDate:    2011-09-09
+    address:    12520 Westport Pkwy,La Vista, NE 68128
+    city:       Omaha
+    confLat:    41.182937
+    confLong_:  -96.05292        
