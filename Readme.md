@@ -14,6 +14,13 @@ You will also need to declare your application secret in your environment.
 
     export PLAY_SECRET="[some random string longer than 16 characters]"
 
+Also make sure to mark your local environment as a dev environment:
+
+    $ play id
+    [SNIP]
+    What is the new framework ID (or blank to unset)? dev
+    OK, the framework ID is now dev
+
 [play]: http://www.playframework.org/
 
 # Twitter OAUTH Credentials
