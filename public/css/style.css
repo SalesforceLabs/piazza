@@ -250,6 +250,11 @@ h3 {
 .button-right {
     position: absolute; right: 10px; top: .4em; 
 }
+
+.button-left {
+    left: 10px;
+}
+
 /**
  * Non-semantic helper classes: please define your styles before this section.
  */
