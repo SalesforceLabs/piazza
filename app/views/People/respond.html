@@ -7,8 +7,8 @@
         <h1>Respond to ${twitterUser}</h1>
     </div><!-- /header -->
     <div data-role="content">
+        <!-- TODO Add relevant Tweet here -->
         <form action="@{People.updateStatus()}" method="POST" data-transition="fade">
-            <label for="msg">Message:</label>
 	        <textarea name="msg" class="msg" maxlength="140">@${twitterUser} ${msg}</textarea>
          
             #{ authenticityToken /}

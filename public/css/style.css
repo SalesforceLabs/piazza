@@ -246,12 +246,18 @@ h3 {
     padding-right: 10px;
 }
 
+
 .button-right {
     position: absolute; right: 10px; top: .4em; 
 }
 
 .button-left {
     left: 10px;
+}
+
+.msg {
+    margin-top: 1em;
+    width: 98% !important;
 }
 
 /**
