@@ -8,6 +8,9 @@
     </div><!-- /header -->
     <div data-role="content">
         <!-- TODO Add relevant Tweet here -->
+        #{if tweet}
+            <div class="ui-body ui-body-e">${tweet.getText()}</div>
+        #{/if}
         <form action="@{People.updateStatus()}" method="POST" data-transition="fade">
 	        <textarea name="msg" class="msg" maxlength="140">@${twitterUser} ${msg}</textarea>
          

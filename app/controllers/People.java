@@ -50,7 +50,9 @@ public class People extends Controller {
     }
     
     public static void respond(String twitterUser, String msg) {
-        render(twitterUser, msg);
+    	User user = RequiresLogin.getActiveUser();
+    	Tweet tweet = Cache.get(TwitterUtil.getTweetCacheKey(user, twitterUser), Tweet.class);
+    	render(twitterUser, msg, tweet);
     }
 
     public static void updateStatus(String twitterUser, String msg) throws Exception {
