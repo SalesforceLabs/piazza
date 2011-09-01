@@ -211,8 +211,7 @@ h3 {
 }
 
 .person-show .recent-tweets li .time {
-    font-size: 90%;
-    float: right;
+    font-size: 85%;
     font-style: italic;
 }
 

@@ -93,9 +93,8 @@
             <ul class="recent-tweets" data-role="listview" data-inset="true">
             #{list person.tweets, as:'tweet'}
             <li>
-                <div class="time">${tweet.getCreatedAt()}</div>
-                ${tweet.getText()}
-                <div class="clear"></div>
+	                ${tweet.getText()}
+	                <span class="time">${tweet.getCreatedAt()}</span>
             </li>
             #{/list}
             </ul>

@@ -105,7 +105,7 @@ public class RequiresLogin extends Controller {
             }
             sb.append("\n");
         }
-        sb.append("\n\n");
+        sb.append("\n");
     }
 
     private static String getSTString(Throwable t) {
