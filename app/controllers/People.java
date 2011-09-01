@@ -10,6 +10,7 @@ import play.cache.Cache;
 import play.mvc.Controller;
 import play.mvc.With;
 import play.templates.JavaExtensions;
+import twitter4j.StatusUpdate;
 import twitter4j.Tweet;
 import twitter4j.TwitterException;
 import util.SfdcUtil;
@@ -55,9 +56,13 @@ public class People extends Controller {
     	render(twitterUser, msg, tweet);
     }
 
-    public static void updateStatus(String twitterUser, String msg) throws Exception {
+    public static void updateStatus(String twitterUser, String msg, Long tweetId) throws Exception {
         checkAuthenticity();
-        TwitterUtil.getTwitter().updateStatus(msg);
+        StatusUpdate status = new StatusUpdate(msg);
+        if (tweetId != null) {
+            status.setInReplyToStatusId(tweetId);
+        }
+        TwitterUtil.getTwitter().updateStatus(status);
         User user = RequiresLogin.getActiveUser();
 
         Person person = Person.get(user, twitterUser);
