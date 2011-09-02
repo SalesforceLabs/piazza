@@ -33,7 +33,7 @@ public class SfdcUtil {
      * Refreshes token and updates current user
      */
     public static void refreshToken() {
-        new SfdcTokenRefresher(RequiresLogin.getActiveUser().id).now();
+        // new SfdcTokenRefresher(RequiresLogin.getActiveUser().id).now();
     }
     
     private static class SfdcTokenRefresher extends Job {
