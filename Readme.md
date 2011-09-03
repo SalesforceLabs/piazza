@@ -7,8 +7,8 @@ Run `make` in Project root directory to setup project.
 
 `make run` to run project.
 
-To to change the default admin users for your app. You can do this by replacing the `piazza.admins` value
-in your `application.conf` file with this:
+Change the default admin users for your app by updating the `piazza.admins` value
+in your `application.conf` file.
 
     piazza.admins=your-twitter-handle-all-lower-case
 
