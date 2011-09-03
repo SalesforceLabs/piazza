@@ -7,6 +7,11 @@ Run `make` in Project root directory to setup project.
 
 `make run` to run project.
 
+To to change the default admin users for your app. You can do this by replacing the `piazza.admins` value
+in your `application.conf` file with this:
+
+    piazza.admins=your-twitter-handle-all-lower-case
+
 # Installing Play
 
 Download the latest version of Play from [Play Framework website][play].

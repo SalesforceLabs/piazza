@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.Index;
 
+import play.Play;
 import play.data.validation.Required;
 import play.db.jpa.GenericModel;
 import play.libs.Crypto;
@@ -67,8 +68,10 @@ public class User extends GenericModel {
     public Double lat;
     public Double long_;
     public String address;
-    
-    public static final Set<String> ADMINS = Collections.unmodifiableSet(Sets.newHashSet("djmojorisin", "anzadev", "mustpax"));
+
+    // Read admin users from the configs
+    public static final Set<String> ADMINS =
+        Collections.unmodifiableSet(Sets.newHashSet(Play.configuration.getProperty("piazza.admins", "").split(",")));
 
     private User(String id) {
         this.id = id.toLowerCase();
@@ -109,7 +112,7 @@ public class User extends GenericModel {
     }
 
     public boolean isAdmin() {
-        return ADMINS.contains(this.id.toLowerCase());
+        return ADMINS.contains(this.id);
     }
     
     public Set<String> getKeywordSet() {

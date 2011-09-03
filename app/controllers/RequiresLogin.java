@@ -37,7 +37,7 @@ import util.TwitterUtil;
  * @author mpaksoy
  */
 public class RequiresLogin extends Controller {
-    private final static boolean isStaging = "true".equals(Play.configuration.getProperty("staging", "false").toLowerCase());
+    private final static boolean isStaging = "true".equals(Play.configuration.getProperty("piazza.staging", "false").toLowerCase());
 
     @Before(priority=10)
     static void https() {
