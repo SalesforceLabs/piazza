@@ -117,8 +117,8 @@ to your application.
 
 # Other Make Targets
 
-We use make targets to manage staging and production deployments. You can more about
-our branching and strategy [here][staging].
+We use make targets to manage staging and production deployments. You can read more about
+our branching strategy [here][staging].
 
 [staging]: http://paksoy.net/post/9634387657/simple-staging-on-heroku 
 
