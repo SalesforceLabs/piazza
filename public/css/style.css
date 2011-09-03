@@ -246,7 +246,6 @@ h3 {
     padding-right: 10px;
 }
 
-
 .button-right {
     position: absolute; right: 10px; top: .4em; 
 }
@@ -258,6 +257,10 @@ h3 {
 .msg {
     margin-top: 1em;
     width: 98% !important;
+}
+
+.highlight {
+    background-color: #99CCFF;
 }
 
 /**
