@@ -7,10 +7,13 @@ Run `make` in Project root directory to setup project.
 
 `make run` to run project.
 
-Change the default admin users for your app by updating the `piazza.admins` value
-in your `application.conf` file.
+Piazza uses Twitter usernames to detect admin users. It will email a designated 
+address when it encounters unexpected errors. You should change these values to
+your Twitter name and email address:
 
     piazza.admins=your-twitter-handle-all-lower-case
+    piazza.error_email=your-email-address
+    
 
 # Installing Play
 
