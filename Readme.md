@@ -90,17 +90,16 @@ for setting application specific data. This includes secure values such as
 the Play application secret that we do not want to commit to source control.
 
 We require numerous environment variables to be set, these are listed below.
-Many are set by Heroku automatically when you add thr corresponding addon
-to your application.
+Where applicable necessary Heroku addons are labeled *[in brackets]*.
 
 * `PLAY_SECRET`: random string that is used as the key for most cypto in Play.
   **Keep this secret.** Should be at least 16 chars, preferably much longer.
-* `DATABASE_URL`: postgres DB URL
-* `MEMCACHE_SERVERS`: path to the memcached servers in Heroku
-* `MEMCACHE_USERNAME`: memcached username
-* `MEMCACHE_PASSWORD`: memcached password
-* `SENDGRID_USERNAME`: sendgrid username
-* `SENDGRID_PASSWORD`: sendgrid password
+* `DATABASE_URL`: postgres DB URL *[shared_database]*
+* `MEMCACHE_SERVERS`: path to the memcached servers in Heroku *[memcached]*
+* `MEMCACHE_USERNAME`: memcached username *[memcached]*
+* `MEMCACHE_PASSWORD`: memcached password *[memcached]*
+* `SENDGRID_USERNAME`: sendgrid username *[sendgrid]*
+* `SENDGRID_PASSWORD`: sendgrid password *[sendgrid]*
 * `SFDC_KEY`: Salesforce.com OAUTH consumer key
 * `SFDC_SECRET`: Salesforce.com OAUTH consumer secret
 * `SFDC_REDIRECT_URI`: Salesforce.com OAUTH redirect URI, should be `https://your-app-name.herokuapp/config`
