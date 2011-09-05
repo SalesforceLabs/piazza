@@ -2,7 +2,7 @@
 all: conf/host.key .lastdepsrun jscompress
 
 run: all
-	play run --https.port=9443
+	play run
 
 push:
 	git push origin master
