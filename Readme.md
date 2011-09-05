@@ -58,25 +58,23 @@ First install PostgreSql. Google for this step, there are many tutorials out the
 for how to do this on all platforms.
 
 Once postgres is set up you will want to create a user for yourself and create
-a new DB for anza.
+a new DB for piazza.
 
     createuser --superuser `whoami` -U postgres
-    createdb anza
+    createdb piazza
     
 
 Add the following environment variables to your `bashrc` file:
 
     # Heroku db setup
-    export DATABASE_PATH=postgresql:anza
-    export DATABASE_USER=`whoami`
-    export DATABASE_PASS=
+    export DATABASE_URL=postgres://`whoami`@localhost/piazza
 
 Restart your shell so the new environment variables are read.
 
 Update the password for your user within postgres db.
 
-    $ psql anza
-    anza=# alter user your_user_name password '';
+    $ psql piazza
+    piazza=# alter user your_user_name password '';
 
 You should now be able to start your Play app.
 
@@ -97,10 +95,7 @@ to your application.
 
 * `PLAY_SECRET`: random string that is used as the key for most cypto in Play.
   **Keep this secret.** Should be at least 16 chars, preferably much longer.
-* `DATABASE_PATH`: path to the Postgres database in your Heroku environment. Will look like
-`postgresql://ec2-hostname-for-db/db-username`
-* `DATABASE_USER`: DB username
-* `DATABASE_PASS`: DB password
+* `DATABASE_URL`: postgres DB URL
 * `MEMCACHE_SERVERS`: path to the memcached servers in Heroku
 * `MEMCACHE_USERNAME`: memcached username
 * `MEMCACHE_PASSWORD`: memcached password
