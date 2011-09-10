@@ -66,16 +66,6 @@
     };
     // END HIGHLIGHTING
     
-    // From http://stackoverflow.com/questions/4660934/how-does-one-disable-caching-in-jquery-mobile-ui/6536496#6536496
-    $('div').live('pagehide', function(event) {
-        var page = $(this);
-
-        if(page.attr('data-cache') == 'never'){
-            page.remove();
-        };
-    });
-    // END NO CACHE
-
     $.fn.refresh = function() {
         var page = $(this);
         var url = page.jqmData('url');

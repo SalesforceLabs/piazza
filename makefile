@@ -28,7 +28,7 @@ deps: .lastdepsrun
 	date > .lastdepsrun
 
 jsdir=public/js/
-jsfiles=${jsdir}jquery-1.6.2.min.js ${jsdir}underscore-min.js ${jsdir}scripts.js ${jsdir}jquery.mobile-1.0b2.min.js
+jsfiles=${jsdir}jquery-1.6.2.min.js ${jsdir}underscore-min.js ${jsdir}scripts.js ${jsdir}jquery.mobile-1.0b3.min.js
 jsall=${jsdir}all.js
 
 jscompress: ${jsall}

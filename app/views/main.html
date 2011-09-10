@@ -25,8 +25,12 @@
     <!-- Mobile viewport optimized: j.mp/bplateviewport -->
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 
-    <!-- CSS: implied media="all" -->
-    <link rel="stylesheet" href="@{'public/css/jquery.mobile-1.0b2.css'}">
+    #{if play.mode.isProd() }
+        <link rel="stylesheet" href="@{'public/css/jquery.mobile-1.0b3.min.css'}">
+    #{/if}
+    #{else}
+        <link rel="stylesheet" href="@{'public/css/jquery.mobile-1.0b3.css'}">
+    #{/else}
     <link rel="stylesheet" href="@{'public/css/style.css'}">
     #{get 'moreStyles' /}
 
@@ -38,7 +42,7 @@
 	    <script src="@{'/public/js/underscore.js'}"></script>
 	    <script src="@{'/public/js/scripts.js'}"></script>
 	    <!-- jQuery Mobile actually needs these to be here -->
-	    <script src="@{'/public/js/jquery.mobile-1.0b2.js'}"></script>
+	    <script src="@{'/public/js/jquery.mobile-1.0b3.js'}"></script>
     #{/else}
     #{get 'moreScripts' /}
 
