@@ -297,4 +297,14 @@ models.Conference(c30):
     address:    12520 Westport Pkwy,La Vista, NE 68128
     city:       Omaha
     confLat:    41.182937
-    confLong_:  -96.05292        
+    confLong_:  -96.05292
+    
+models.Conference(c31):
+    name:       Cloudforce London 2011
+    hashtag:    "#cloudforce"
+    startDate:  2011-09-14
+    endDate:    2011-09-15
+    address:    Belvedere Road, Lon SE1 8XX, United Kingdom
+    city:       London
+    confLat:    51.52454
+    confLong_:  -0.09897         
