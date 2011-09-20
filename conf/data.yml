@@ -308,3 +308,13 @@ models.Conference(c31):
     city:       London
     confLat:    51.52454
     confLong_:  -0.09897         
+
+models.Conference(c32):
+    name:       Strange Loop 2011
+    hashtag:    "#strangeloop"
+    startDate:  2011-09-18
+    endDate:    2011-09-21
+    address:    1 South Broadway, Saint Louis, Missouri, 63102
+    city:       Saint Louis
+    confLat:    38.6253012
+    confLong_:  -90.1904077
