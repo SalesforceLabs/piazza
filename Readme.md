@@ -1,5 +1,3 @@
-Piazza is live and running on Heroku: https://piazza.herokuapp.com/
-
 Watch our quick demo: http://www.youtube.com/watch?v=-zXFJ1lWGN8
 
 # Basics
